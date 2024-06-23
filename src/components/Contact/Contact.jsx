@@ -2,8 +2,12 @@ import PropTypes from 'prop-types';
 import { HiUser } from 'react-icons/hi2';
 import { HiPhone } from 'react-icons/hi2';
 import styles from './Contact.module.css';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from '../../redux/contactsSlice';
 
-function Contact({ contact, onDelete }) {
+function Contact({ contact }) {
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className={styles.profile}>
@@ -18,7 +22,7 @@ function Contact({ contact, onDelete }) {
         </div>
       </div>
 
-      <button type="button" onClick={() => onDelete(contact.id)}>
+      <button type="button" onClick={() => dispatch(deleteContact(contact.id))}>
         Delete
       </button>
     </>
